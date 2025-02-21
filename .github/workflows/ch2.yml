@@ -1,4 +1,4 @@
-name "Chapter Two"
+name: "Chapter Two"
 on: push
 jobs:
     job-1:
