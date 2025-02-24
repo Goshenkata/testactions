@@ -1,9 +1,18 @@
 name: "Chapter Three"
 on: push
-env:
-    ARTIFACT_NAME: myartifact
 jobs:
-    job-1:
+    test:
+        runs-on: ubuntu-latest
+        steps:
+          - name: "Checkout"
+            uses: actions/checkout@v4
+          - name: "Setup python"
+            uses: actions/setup-python@v5
+            with:
+                    python-version: '3.13' 
+          - name: "Test"
+            run: "python hello.py"
+    upload:
         runs-on: ubuntu-latest
         steps:
           - name: "Checkout"
@@ -11,5 +20,5 @@ jobs:
           - name: "Upload"
             uses: actions/upload-artifact@v4
             with:
-                name: ${{env.ARTIFACT_NAME}}
-                path: "./"
+                name: "hello.py"
+                path: "./hello.py"
